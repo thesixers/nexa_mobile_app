@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+    color: rgba(0, 0, 255, 0.575);
+}
+
+/* className="w-[35px] justify-center items-center h-[35px] rounded-full bg-white" */
+/* style={{backgroundColor: "rgba(0, 0, 255, 0.575)"}} */
