@@ -12,10 +12,7 @@ const sign = () => {
     const [usersPhone, setUsersPhone] = useState("")
 
     function changeCountry(){
-        if(!userCountry) {
-            console.log(countryPhoneCodes[0])
-            setUserCountry(countryPhoneCodes[0])
-        }
+        if(!userCountry) setUserCountry(countryPhoneCodes[0])
     }
 
     useEffect(() => {
@@ -39,14 +36,20 @@ const sign = () => {
         // } catch (error) {
         //     console.log(error);
         // }
-        Alert.alert("Success", "Otp is sent to ur phone number: " + phone)
+        // Alert.alert("Success", "Otp is sent to ur phone number: " + phone) 
+        router.push({
+            pathname: '/verify',
+            params: {
+                phone
+            }
+        })
     } 
     
   return (
     <SafeAreaView className="bg-white h-full relative">
       <View className="px-3 py-1 h-[60px] w-full flex flex-row items-center">
         <TouchableOpacity className="flex-1"
-            onPress={() => {router.back()}}
+            onPress={() => {router.replace('/onboarding')}} 
         >
             <XIcon color="black" />
         </TouchableOpacity>
@@ -55,13 +58,13 @@ const sign = () => {
         </TouchableOpacity> 
       </View>
       <View>
-        <View className="w-full py-6">
-            <Text className="w-full text-center text-2xl p-3 font-wmedium text-secondary-100">Enter Your Phone Number</Text>
+        <View className="w-full py-1">
+            <Text className="w-full text-center text-2xl p-3 font-wmedium ">Enter Your Phone Number</Text>
             <Text className="w-full text-center text-gray-500 p-2 font-wlight">
                 Nexa will need to verify your phone number. {"\n"}Network charges may apply
             </Text>
 
-            <View>
+            <View className="pt-7">
                 <View className="w-full items-center p-2" >
                     <TouchableOpacity 
                     style={{

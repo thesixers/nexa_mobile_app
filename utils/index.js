@@ -19,6 +19,17 @@ function sort(){
   return newList
 }
 
+export function generateOTP(){ 
+  return Math.floor((10000 + 99999 ) * Math.random())
+}
+
+const networkChecker = () => {
+  NetInfo.fetch().then(state => {
+      console.log(state.isConnected);
+      return state.isConnected
+  })
+}
+
 export const callHistory = [
     { id: 1, name: 'John Doe', type: 'Video', date: '2025-03-28', duration: '5:32', status: 'Missed', phoneNumber: '+2347012345678', time: "8:30 pm" },
     { id: 2, name: 'Jane Smith', type: 'Audio', date: '2025-03-27', duration: '2:11', status: 'Missed', phoneNumber: '+2347023456789', time: "9:30 am" },

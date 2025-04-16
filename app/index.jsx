@@ -12,8 +12,7 @@ const index = () => {
   setTimeout(() => {
     if(isLoggedIn)  router.replace("/calllog") 
       else
-    //  router.replace('/onboarding')
-    router.replace('/sign')
+     router.replace('/onboarding')
   }, 1000);
 
   return (
