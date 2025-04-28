@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "MyApp",
-    "slug": "MyApp",
-    "scheme": "MyApp",
+    "name": "Nexa",
+    "slug": "Nexa",
+    "scheme": "Nexa",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/appicon.webp",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
@@ -20,14 +20,25 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "CAMERA",
+        "MODIFY_AUDIO_SETTINGS",
+        "BLUETOOTH",
+        "INTERNET",
+        "FOREGROUND_SERVICE",
+        "RECORD_AUDIO",
+        "WAKE_LOCK"
+      ],
+      "package": "com.anonymous.MyApp"
     },
     "web": {
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-dev-client"
     ]
   }
 }

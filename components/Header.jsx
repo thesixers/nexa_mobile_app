@@ -10,7 +10,7 @@ const Header = () => {
     <View className="flex-1 flex flex-row  w-full items-center">
         {
             !toggleSearch ? 
-            <Text className=" text-[35px] color-blue-600 font-wsemibold">Nexa</Text>
+            <Text className=" text-[35px] color-blue-500 font-wsemibold">Nexa</Text>
             :
             <SearchInput setToggleSearch={setToggleSearch} toggleSearch={toggleSearch} />
         }

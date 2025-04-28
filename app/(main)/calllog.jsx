@@ -4,17 +4,26 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { callHistory, formatDate, getFirstLetter} from '../../utils'
 import { icons } from "../../constants"
 import Header from '../../components/Header'
+import Avata from '../../components/Avata'
+import { router } from 'expo-router'
+import useCallStore from "../../store/useCallStore";
 
 
-const Log = ({item: { id, name, date, time, type, duration }}) => {
+
+
+const Log = ({item: { id, name, date, time, type, duration, phoneNumber }}) => {
+  let { calls, callManager } = useCallStore()
 
   return(
-    <TouchableOpacity activeOpacity={0.8} className="flex-row items-center p-2">
-              <View className="border border-1 border-secondary-100 p-2 w-[50px] h-[50px] rounded-full justify-center items-center">
-                  <View className="bg-secondary-100 w-[50px] h-[50px] rounded-full justify-center items-center">
-                  <Text className="text-white font-wmedium text-[18px]">{getFirstLetter(name)}</Text>
-                  </View>
-              </View>
+    <TouchableOpacity 
+      onPress={() => {
+        if(calls.length > 0) return;
+        callManager.call(phoneNumber)
+      }}
+      activeOpacity={0.8} 
+      className="flex-row items-center p-2"
+      >
+              <Avata name={name} height={50} width={50} textsize={18} />
               <View className="px-1  flex-1 gap-1 h-full">
                 <Text className="px-3 font-wlight">{name}</Text>
                 <View className="flex-row px-3">
@@ -62,11 +71,7 @@ const Calllog = () => {
               keyExtractor={(item, index) => index}
               renderItem={({item}) => (
                 <TouchableOpacity className="w-[80px] px-2  justify-center items-center">
-                    <View className="border border-1 border-secondary-100 p-2 w-[50px] h-[50px] rounded-full justify-center items-center">
-                      <View className="bg-secondary-100 w-[50px] h-[50px] rounded-full justify-center items-center">
-                      <Text className="text-white font-wmedium text-[18px]">{getFirstLetter(item.name)}</Text>
-                      </View>
-                  </View>
+                  <Avata name={item.name} height={50} width={50} textsize={18} />
                   <Text className="w-full text-center text-[8px] font-wbold"> {item.name}</Text>
                 </TouchableOpacity>
               )}
@@ -74,11 +79,7 @@ const Calllog = () => {
                 <TouchableOpacity className="w-[80px] px-2  justify-center items-center" 
                   onPress={() => { addToFav()}}
                 >
-                    <View className="border border-1 border-blue-300 p-2 w-[50px] h-[50px] rounded-full justify-center items-center">
-                      <View className="bg-blue-300 w-[50px] h-[50px] rounded-full justify-center items-center">
-                      <Text className="text-white font-wmedium text-[35px] items-center justify-center">+</Text>
-                      </View>
-                  </View>
+                  <Avata name="+" height={50} width={50} textsize={18} />
                   <Text className="w-full text-center text-[8px]"> Add </Text>
                 </TouchableOpacity>
               )}

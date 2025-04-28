@@ -1,19 +1,19 @@
 import { View, Text } from 'react-native'
-import React, { useEffect } from 'react'
-import { router, Link, Redirect } from "expo-router"
-import { StatusBar } from 'expo-status-bar'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { images, icons } from "../constants"
+import React from 'react'
+import { Redirect, router } from "expo-router"
 import { useGlobalContext } from '../context/GlobalProvider'
 
 const index = () => {
   const { isLoggedIn, isLoading } = useGlobalContext()
- 
-  setTimeout(() => {
-    if(isLoggedIn)  router.replace("/calllog") 
-      else
-     router.replace('/onboarding')
-  }, 1000);
+
+      if(isLoggedIn && !isLoading) {
+        return <Redirect href="/calllog" />
+      }
+      else{
+        return <Redirect href="/onboarding" />
+      }
+    
+
 
   return (
     <View className="w-full h-full justify-center items-center relative bg-white">

@@ -4,6 +4,7 @@ import { Tabs } from "expo-router"
 import { icons } from '../../constants'
 import Animated, { useSharedValue, withTiming } from "react-native-reanimated";
 import { StatusBar } from 'expo-status-bar';
+import  {CallProvider } from '../../context/callContext';
 
 
 
@@ -36,8 +37,9 @@ const TabIcon = ({icon, color, name, focused}) => {
 }
 
 const MainLayout = () => {
+
   return (
-    <>
+    <CallProvider>
         <Tabs
           screenOptions={{
             tabBarShowLabel: false,
@@ -87,12 +89,10 @@ const MainLayout = () => {
             />
         </Tabs>
         <StatusBar backgroundColor='white' style='dark' />
-    </>
+    </CallProvider>
   )
 }
 
-const styles = StyleSheet.create({
-  box: {},
-});
+
 
 export default MainLayout
